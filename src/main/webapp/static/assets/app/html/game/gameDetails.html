@@ -1,0 +1,327 @@
+<style>
+    .choice{
+        cursor:pointer;
+        margin: 5px 0;
+    }
+    span{
+        display: block;
+    }
+
+</style>
+
+<section ng-init="run(0)">
+    <!--<div ng-cloak>
+        <div>
+            <h2 ng-if="contentShow!=null">第{{index}}幕</h2>
+            <span ng-if="contentShow!=null" ng-bind="gameContent.detail"></span><br/>
+            <br/>
+            <span class="choice" ng-repeat="choice in choices" ng-click="runNext(gameContent.choiceid,choice.id,$index)">{{choice.option}}</span>
+            <span class="choice" ng-if="answer!=null" ng-bind="answer"></span>
+            <br>
+            <span class="choice" ng-if="next!=null&&gameContent.choiceid!=-1" ng-click="nextContent(gameContent.id)">下一关</span>
+            <span class="choice" ng-if="gameContent.choiceid==-1" ng-click="home()">返回首页</span>
+            <br>
+            <span class="choice" ng-if="error!=null"><a href="javascript:history.go(0)">重新开始</a></span>
+            &lt;!&ndash;<br/><span ng-show="contentShow!=null"><a ng-href="#/game/{{gameId}}"><button>重新开始</button></a></span>&ndash;&gt;
+
+        </div>
+    </div>-->
+    <div id="q1">
+        <div class="content">
+            <p class="subject_t" ng-if="contentShow!=null">{{index}}、{{gameContent.detail}}</p>
+            <p class="subject_t" ng-if="answer!=null" ng-bind="answer"></p>
+            <p class="choice" ng-repeat="choice in choices" ng-click="runNext(gameContent.choiceid,choice.id,$index)">{{choice.option}}</p>
+            <span class="enter_btn" ng-if="next!=null&&gameContent.choiceid!=-1" ng-click="nextContent(gameContent.id)"><a id="next1">下一关</a></span>
+            <span class="enter_btn" ng-if="error!=null" ><a href="javascript:history.go(0)">重新开始</a></span>
+            <span class="enter_btn" ng-if="gameContent.choiceid==-1" ><a ng-click="home()">回到首页</a></span>
+        </div>
+    </div>
+    <!--<div id="q1">
+        <div class="content">
+            <p class="subject_t">1、十八大修改党章遵循的原则____。</p>
+            <p><span><input id="rd1_1" name="rd1" type="radio" value="false"></span><label for="rd1_1">A.坚持以马克思列宁主义、毛泽东思想、邓小平理论、“三个代表”重要思想和科学发展观为指导</label></p>
+            <p><span><input id="rd1_2" name="rd1" type="radio" value="false"></span><label for="rd1_2">B.坚持发扬党内民主，集中全党智慧</label></p>
+            <p><span><input id="rd1_3" name="rd1" type="radio" value="false"></span><label for="rd1_3">C.保持党章总体稳定，只修改那些必须改的，在党内已经形成共识的内容</label></p>
+            <p><span><input id="rd1_4" name="rd1" type="radio" value="true"></span><label for="rd1_4">D.以上都是</label></p>
+        </div>
+        <div id="msg1" class="no_choice" style="display:none;">您还没选择！</div>
+        <div class="enter_btn"><a id="b1" href="javascript:void(0);">确定</a></div>
+    </div>-->
+    <!--<div id="a1" style="display:none;">
+        <div class="content_jd">
+            <p>正确解答：十八大修改党章遵循的原则：</p>
+            <p>一是<font class="ys">坚持以马克思列宁主义、毛泽东思想、邓小平理论、“三个代表”重要思想和科学发展观为指导，把党的十八大报告确立的重大理论观点和重大战略思想写入党章。</font></p>
+            <p>二是<font class="ys">坚持发扬党内民主，集中全党智慧。</font></p>
+            <p>
+                三是<font class="ys">保持党章总体稳定，只修改那些必须改的，在党内已经形成共识的内容。</font>
+            </p>
+            <span id="r1" class="right" style="display:none;"></span>
+            <span id="w1" class="wrong" style="display:none;"></span>
+        </div>
+        <div class="enter_btn"><a id="next1" href="#">下一题</a></div>
+    </div>-->
+</section>
+
+<script type="text/javascript">
+    $(function () {
+        a1 = a2 = a3 = a4 = a5 = a6 = a7 = a8 = a9 = a10 = 0;
+        $("#b1").click(function () {
+            var rl1 = $('#q1 input:radio[name="rd1"]:checked').val();
+            if (rl1 == null) {
+                $("#msg1").fadeIn(500);
+            }
+            else {
+                setTimeout('$("#q1").fadeOut(100);', 1);
+                setTimeout('$("#a1").fadeIn(1000);', 100);
+                if (rl1 == "true") {
+                    a1 = 1;
+                    setTimeout('$("#r1").slideDown()', 500);
+                }
+                else {
+                    setTimeout('$("#w1").slideDown()', 500);
+                }
+            }
+        });
+        $("#next1").click(function () {
+            setTimeout('$("#a1").fadeOut(100);', 1);
+            setTimeout('$("#q2").fadeIn(1000);', 100);
+        });
+
+        $("#b2").click(function () {
+            var rl2 = $('#q2 input:radio[name="rd2"]:checked').val();
+            if (rl2 == null) {
+                $("#msg2").fadeIn(500);
+            }
+            else {
+                setTimeout('$("#q2").fadeOut(100);', 1);
+                setTimeout('$("#a2").fadeIn(1000);', 100);
+                if (rl2 == "true") {
+                    a2 = 1;
+                    setTimeout('$("#r2").slideDown()', 500);
+                }
+                else {
+                    setTimeout('$("#w2").slideDown()()', 500);
+                }
+            }
+        });
+        $("#next2").click(function () {
+            setTimeout('$("#a2").fadeOut(100);', 1);
+            setTimeout('$("#q3").fadeIn(1000);', 100);
+        });
+
+        $("#b3").click(function () {
+            var rl3 = $('#q3 input:radio[name="rd3"]:checked').val();
+            if (rl3 == null) {
+                $("#msg3").fadeIn(500);
+            }
+            else {
+                setTimeout('$("#q3").fadeOut(100);', 1);
+                setTimeout('$("#a3").fadeIn(1000);', 100);
+                if (rl3 == "true") {
+                    a3 = 1;
+                    setTimeout('$("#r3").slideDown()', 500);
+                }
+                else {
+                    setTimeout('$("#w3").slideDown()()', 500);
+                }
+            }
+        });
+        $("#next3").click(function () {
+            setTimeout('$("#a3").fadeOut(100);', 1);
+            setTimeout('$("#q4").fadeIn(1000);', 100);
+        });
+
+        $("#b4").click(function () {
+            var rl4 = $('#q4 input:radio[name="rd4"]:checked').val();
+            if (rl4 == null) {
+                $("#msg4").fadeIn(500);
+            }
+            else {
+                setTimeout('$("#q4").fadeOut(100);', 1);
+                setTimeout('$("#a4").fadeIn(1000);', 100);
+                if (rl4 == "true") {
+                    a4 = 1;
+                    setTimeout('$("#r4").slideDown()', 500);
+                }
+                else {
+                    setTimeout('$("#w4").slideDown()()', 500);
+                }
+            }
+        });
+        $("#next4").click(function () {
+            setTimeout('$("#a4").fadeOut(100);', 1);
+            setTimeout('$("#q5").fadeIn(1000);', 100);
+        });
+
+        $("#b5").click(function () {
+            var rl5 = $('#q5 input:radio[name="rd5"]:checked').val();
+            if (rl5 == null) {
+                $("#msg5").fadeIn(500);
+            }
+            else {
+                setTimeout('$("#q5").fadeOut(100);', 1);
+                setTimeout('$("#a5").fadeIn(1000);', 100);
+                if (rl5 == "true") {
+                    a5 = 1;
+                    setTimeout('$("#r5").slideDown()', 500);
+                }
+                else {
+                    setTimeout('$("#w5").slideDown()()', 500);
+                }
+            }
+        });
+        $("#next5").click(function () {
+            setTimeout('$("#a5").fadeOut(100);', 1);
+            setTimeout('$("#q6").fadeIn(1000);', 100);
+        });
+
+        $("#b6").click(function () {
+            var rl6 = $('#q6 input:radio[name="rd6"]:checked').val();
+            if (rl6 == null) {
+                $("#msg6").fadeIn(500);
+            }
+            else {
+                setTimeout('$("#q6").fadeOut(100);', 1);
+                setTimeout('$("#a6").fadeIn(1000);', 100);
+                if (rl6 == "true") {
+                    a6 = 1;
+                    setTimeout('$("#r6").slideDown()', 500);
+                }
+                else {
+                    setTimeout('$("#w6").slideDown()()', 500);
+                }
+            }
+        });
+        $("#next6").click(function () {
+            setTimeout('$("#a6").fadeOut(100);', 1);
+            setTimeout('$("#q7").fadeIn(1000);', 100);
+        });
+
+
+        $("#b7").click(function () {
+            var rl7 = $('#q7 input:radio[name="rd7"]:checked').val();
+            if (rl7 == null) {
+                $("#msg7").fadeIn(500);
+            }
+            else {
+                setTimeout('$("#q7").fadeOut(100);', 1);
+                setTimeout('$("#a7").fadeIn(1000);', 100);
+                if (rl7 == "true") {
+                    a7 = 1;
+                    setTimeout('$("#r7").slideDown()', 500);
+                }
+                else {
+                    setTimeout('$("#w7").slideDown()()', 500);
+                }
+            }
+        });
+        $("#next7").click(function () {
+            setTimeout('$("#a7").fadeOut(100);', 1);
+            setTimeout('$("#q8").fadeIn(1000);', 100);
+        });
+
+
+        $("#b8").click(function () {
+            var rl8 = $('#q8 input:radio[name="rd8"]:checked').val();
+            if (rl8 == null) {
+                $("#msg8").fadeIn(500);
+            }
+            else {
+                setTimeout('$("#q8").fadeOut(100);', 1);
+                setTimeout('$("#a8").fadeIn(1000);', 100);
+                if (rl8 == "true") {
+                    a8 = 1;
+                    setTimeout('$("#r8").slideDown()', 500);
+                }
+                else {
+                    setTimeout('$("#w8").slideDown()()', 500);
+                }
+            }
+        });
+        $("#next8").click(function () {
+            setTimeout('$("#a8").fadeOut(100);', 1);
+            setTimeout('$("#q9").fadeIn(1000);', 100);
+        });
+
+        $("#b9").click(function () {
+            var rl9 = $('#q9 input:radio[name="rd9"]:checked').val();
+            if (rl9 == null) {
+                $("#msg9").fadeIn(500);
+            }
+            else {
+                setTimeout('$("#q9").fadeOut(100);', 1);
+                setTimeout('$("#a9").fadeIn(1000);', 100);
+                if (rl9 == "true") {
+                    a9 = 1;
+                    setTimeout('$("#r9").slideDown()', 500);
+                }
+                else {
+                    setTimeout('$("#w9").slideDown()()', 500);
+                }
+            }
+        });
+        $("#next9").click(function () {
+            setTimeout('$("#a9").fadeOut(100);', 1);
+            setTimeout('$("#q10").fadeIn(1000);', 100);
+        });
+
+
+        $("#b10").click(function () {
+            var cbl10 = $('#q10 input:checkbox[name="cb10"][checked]');
+            if (cbl10.length == 0) {
+                $("#msg10").fadeIn(500);
+            }
+            else {
+                setTimeout('$("#q10").fadeOut(100);', 1);
+                setTimeout('$("#a10").fadeIn(1000);', 100);
+                var checkList = new Array();
+                var rightList = new Array("cb10_1","cb10_2", "cb10_3");
+                var rightFlag = false;
+                if (cbl10.length == rightList.length) {
+                    cbl10.each(function () {
+                        checkList.push($(this).attr("id"));
+                    });
+                }
+                if (checkList.sort().toString() == rightList.sort().toString()) {
+                    rightFlag = true;
+                }
+                if (rightFlag) {
+                    a10 = 1;
+                    setTimeout('$("#r10").slideDown()', 500);
+                }
+                else {
+                    setTimeout('$("#w10").slideDown()', 500);
+                }
+            }
+        });
+        $("#next10").click(function () {
+            setTimeout('$("#answer").fadeOut(100);', 1);
+            setTimeout('$("#score").fadeIn(1000);', 100);
+
+            sc = a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8 + a9 + a10;
+            if (sc == 0) {
+                $('#fs').addClass("f0");
+            } else if (sc == 1) {
+                $('#fs').addClass("f10");
+            } else if (sc == 2) {
+                $('#fs').addClass("f20");
+            } else if (sc == 3) {
+                $('#fs').addClass("f30");
+            } else if (sc == 4) {
+                $('#fs').addClass("f40");
+            } else if (sc == 5) {
+                $('#fs').addClass("f50");
+            } else if (sc == 6) {
+                $('#fs').addClass("f60");
+            } else if (sc == 7) {
+                $('#fs').addClass("f70");
+            } else if (sc == 8) {
+                $('#fs').addClass("f80");
+            } else if (sc == 9) {
+                $('#fs').addClass("f90");
+            } else if (sc == 10) {
+                $('#fs').addClass("f100");
+            }
+        });
+    });
+</script>

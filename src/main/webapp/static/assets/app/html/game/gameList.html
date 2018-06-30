@@ -1,0 +1,24 @@
+<section >
+    <!--<div ng-repeat="game in games">
+        <div>
+            <h2 ng-bind="game.title"></h2>
+            <span ng-bind="game.description"></span>
+            <br/><a ng-href="#/game/{{game.id}}"><button >开始游戏</button></a>
+            <hr/>
+        </div>
+    </div>-->
+
+    <div ng-init="gameList()" class="content" id="q1">
+        <ul ng-repeat="game in games">
+            <p class="ptit"><h4><a ng-href="#/game/{{game.id}}" target="_blank" title="{{game.title}}"
+                                  ng-bind="game.title"></a></h4></p>
+            <!--<p class="ptime">发布时间：2013-08-10 作者：杨青 分类：div+css </p>-->
+            <a ng-href="#/game/{{game.id}}" target="_blank" title=" li列表在网页中常见应用例举（二）"><img src="/static/assets/img/s1.jpg"
+                                                                                            class="imgdow"
+                                                                                            alt="{{game.title}}"></a>
+            <p class="pcon">{{game.description}}<a ng-href="#/game/{{game.id}}" title="{{game.title}}">开始游戏</a></P> <div class="line"></div>
+
+        </ul>
+    </div>
+    <div id="page" style="position: relative;top: -30px;"></div>
+</section>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bluewhale.core.dao.UserInfoMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="cn.bluewhale.core.entity.UserInfo">
+		<id column="uid" property="uid" />
+		<result column="roleId" property="roleId" />
+		<result column="nickname" property="nickname" />
+		<result column="sex" property="sex" />
+		<result column="birthday" property="birthday" />
+		<result column="score" property="score" />
+		<result column="login" property="login" />
+		<result column="regIp" property="regIp" />
+		<result column="regTime" property="regTime" />
+		<result column="lastLoginIp" property="lastLoginIp" />
+		<result column="updateTime" property="updateTime" />
+		<result column="lastPost" property="lastPost" />
+		<result column="posts" property="posts" />
+		<result column="digestPosts" property="digestPosts" />
+		<result column="newsLetter" property="newsLetter" />
+	</resultMap>
+
+</mapper>
